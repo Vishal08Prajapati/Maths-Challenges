@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.templatevilla.brainchallenge">
+
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:name=".ui.application"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+
+        <receiver android:name="com.templatevilla.brainchallenge.service.AlarmReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+
+        <service
+            android:name="com.templatevilla.brainchallenge.service.NotificationService"
+            android:enabled="true">
+
+        </service>
+
+        <receiver
+            android:name="com.templatevilla.brainchallenge.service.RestartService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="RestartService" />
+            </intent-filter>
+        </receiver>
+
+
+        <!--        <receiver android:name=".DeviceBootReceiver"-->
+        <!--            android:enabled="false">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.BOOT_COMPLETED"/>-->
+        <!--            </intent-filter>-->
+        <!--        </receiver>-->
+
+
+        <!--        <receiver android:name=".receiver.AlarmReceiver">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.BOOT_COMPLETED" />-->
+        <!--            </intent-filter>-->
+        <!--        </receiver>-->
+
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/app_id" />
+
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.templatevilla.brainchallenge.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+        <receiver android:name="com.templatevilla.brainchallenge.receiver.NotificationReceiver" />
+
+        <activity
+
+            android:name="com.templatevilla.brainchallenge.ui.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.ActivitySetting"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow" />
+
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.LearnTableActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow" />
+
+
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.LearnQuizActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow" />
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.LevelActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow" />
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.QuizActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow" />
+
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.ScoreActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow" />
+
+
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.ReviewAnswerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow" />
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.AllReviewTestActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow" />
+
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.ReviewTestActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow" />
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.InputActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.TrueFalseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.FindMissingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.DualActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.DualScoreActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+
+        <activity
+            android:name="com.templatevilla.brainchallenge.ui.ActivityReminder"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenWindow"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+
+    </application>
+
+</manifest>
